@@ -1,11 +1,15 @@
 import axios from 'axios';
 
+const defaultApiUrl = import.meta.env.PROD
+  ? 'https://repo-buddy.onrender.com/api'
+  : 'http://localhost:5001/api';
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5001/api',
+  baseURL: import.meta.env.VITE_API_URL || defaultApiUrl,
   headers: {
     'Content-Type': 'application/json'
   },
-  timeout: 20000
+  timeout: 25000
 });
 
 export interface HealthResponse {
